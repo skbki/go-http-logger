@@ -43,14 +43,14 @@ jobs:
         uses: docker/build-push-action@v2.2.2
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:latest
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
           cache-to: type=inline
           push: true
           tags: | 
-            skbki/$IMAGE_NAME:latest
-            skbki/$IMAGE_NAME:$(date +%s)
-            ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:latest
-            ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:$(date +%s)
+            skbki/${{ env.IMAGE_NAME }}:latest
+            skbki/${{ env.IMAGE_NAME }}:$(date +%s)
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:$(date +%s)
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
