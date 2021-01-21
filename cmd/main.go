@@ -24,7 +24,7 @@ func main() {
 
 	http.Handle("/", r)
 
-	log.Fatal(http.ListenAndServe(":8090", nil))
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
 
 func logPrintHandler(w http.ResponseWriter, r *http.Request) {

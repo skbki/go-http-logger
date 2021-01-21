@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  go-http-logger:
+    container_name: go-http-logger
+    image: ghcr.io/skbki/go-http-logger:latest
+    ports:
+    - 89:80
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "10"
+    restart: always
